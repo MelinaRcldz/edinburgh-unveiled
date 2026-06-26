@@ -71,6 +71,16 @@ const FALLBACK_COLORS = [
 /* ============================================================
    ESTADO GLOBAL
    ============================================================ */
+function obtenerFavoritosGuardados() {
+  try {
+    return JSON.parse(localStorage.getItem("lugaresFavoritos") || "[]");
+  } catch (error) {
+    console.warn("Favoritos corruptos en localStorage. Se reinician.", error);
+    localStorage.removeItem("lugaresFavoritos");
+    return [];
+  }
+}
+
 const STATE = {
   filtro: "todos",
   selectedId: null,
@@ -80,7 +90,7 @@ const STATE = {
   panY: 0,
   isDragging: false,
   dragStart: null,
-  favoritos: new Set(JSON.parse(localStorage.getItem("lugaresFavoritos") || "[]")),
+  favoritos: new Set(obtenerFavoritosGuardados()),
   _lastFocusedMarker: null,
 };
 

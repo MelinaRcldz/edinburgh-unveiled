@@ -3,7 +3,17 @@
 // ==========================================
 const URL_JSON = '/data/places.json';
 // Obtenemos los favoritos del localStorage o inicializamos un array vacío
-let favoritos = JSON.parse(localStorage.getItem('lugaresFavoritos')) || [];
+function obtenerFavoritosGuardados() {
+    try {
+        return JSON.parse(localStorage.getItem('lugaresFavoritos')) || [];
+    } catch (error) {
+        console.warn('Favoritos corruptos en localStorage. Se reinician.', error);
+        localStorage.removeItem('lugaresFavoritos');
+        return [];
+    }
+}
+
+let favoritos = obtenerFavoritosGuardados();
 let datosLugares = []; // Array donde se guardarán los objetos del JSON
 let contenedorPlacesGlobal = null;
 // Estado de filtros para Places
@@ -350,11 +360,6 @@ function manejarFavorito(idLugar, botonElemento) {
         'lugaresFavoritos',
         JSON.stringify(favoritos)
     );
-
-    localStorage.setItem(
-    'lugaresFavoritos',
-    JSON.stringify(favoritos)
-);
 
 sincronizarBotonesFavorito(idLugar);
 }
