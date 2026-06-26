@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secretos de la Ciudad | Sobre nosotros</title>
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/styles/about.css">
+    <link rel="stylesheet" href="/styles/carousel.css">
+    <link rel="icon" href="/assets/favicon(2).svg" type="image/svg+xml">
+</head>
+<body>
+
+    <!-- ===== HEADER / NAV PRINCIPAL ===== -->
+    <header class="site-header">
+      <a href="/" class="brand" aria-label="Ir al inicio — Secretos de la Ciudad">
+        <span class="brand__icon" aria-hidden="true"></span>
+        <span class="brand__name">
+          <strong>Secretos</strong>
+          <span>de la Ciudad</span>
+        </span>
+      </a>
+
+      <!-- ===== Navegación principal ===== -->
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="main-nav__list">
+          <li><a href="../index.html" class="main-nav__link">Inicio</a></li>
+          <li><a href="places.html" class="main-nav__link">Explorar</a></li>
+          <li><a href="map.html" class="main-nav__link">Mapa</a></li>
+          <li><a href="about.html" class="main-nav__link main-nav__link--active" aria-current="page">Sobre nosotros</a></li>
+        </ul>
+      </nav>
+
+      <!-- ===== Barra de búsqueda ===== -->
+      <form class="site-search" role="search" action="#" method="get">
+        <label for="search-input" class="sr-only">Buscar lugares</label>
+        <input
+          id="search-input"
+          type="search"
+          name="q"
+          class="site-search__input"
+          placeholder="Buscar lugares..."
+          autocomplete="off"
+          aria-label="Buscar lugares"
+        />
+        <button type="submit" class="site-search__btn" aria-label="Buscar">
+          <span class="icon icon--search" aria-hidden="true"></span>
+        </button>
+      </form>
+
+    </header>
+
+    <main class="site-layout">
+
+        <!-- Section de sobre Nosotros -->
+        <section class="about" aria-labelledby="about-title">
+
+          <header class="about__header">
+            <p class="about__eyebrow">Sobre nosotros</p>
+            <h1 class="about__title" id="about-title">
+              Tres personas obsesionadas con los
+              <em class="about__title-highlight">secretos</em>
+              de Buenos Aires
+            </h1>
+            <p class="about__description">
+              No somos una empresa ni una agencia. Somos una exploradora, una
+              historiadora y un desarrollador que decidieron que Buenos Aires
+              merecía un mapa de sus historias ocultas.
+            </p>
+          </header>
+
+        </section>
+
+        <!-- Card de miembros del equipo -->
+        <section class="team" aria-labelledby="team-title">
+
+          <header class="team__header">
+            <h2 class="team__eyebrow" id="team-title">El equipo</h2>
+          </header>
+
+          <ul class="team__list" aria-label="Miembros del equipo">
+
+            <li class="team__item">
+              <article class="team-card" aria-labelledby="member-1-name">
+
+                <header class="team-card__header">
+                  <span class="team-card__avatar" aria-hidden="true">MR</span>
+                  <hgroup class="team-card__identity">
+                    <h3 class="team-card__name" id="member-1-name">Melina Ricaldez</h3>
+                    <p class="team-card__role">Desarrolladora</p>
+                  </hgroup>
+                </header>
+
+                <p class="team-card__bio">
+                  Estudiante de Ingeniería Informática
+                </p>
+
+                <footer class="team-card__footer">
+                  <address class="team-card__contact">
+                    <ul class="team-card__meta">
+                      <li class="team-card__meta-item">
+                        <span aria-hidden="true">&#128205;</span>
+                        <span>Caballito, CABA</span>
+                      </li>
+                      <li class="team-card__meta-item">
+                        <a href="mailto:ricaldezmelina123@gmail.com" class="team-card__email">
+                          <span aria-hidden="true">&#9993;</span>
+                          ricaldezmelina123@gmail.com
+                        </a>
+                      </li>
+                    </ul>
+                  </address>
+                </footer>
+
+              </article>
+            </li>
+
+            <li class="team__item">
+              <article class="team-card" aria-labelledby="member-2-name">
+
+                <header class="team-card__header">
+                  <span class="team-card__avatar" aria-hidden="true">AF</span>
+                  <hgroup class="team-card__identity">
+                    <h3 class="team-card__name" id="member-2-name">Axel Figueredo</h3>
+                    <p class="team-card__role">Desarrollador</p>
+                  </hgroup>
+                </header>
+
+                <p class="team-card__bio">
+                 Estudiante en Ingeniería en Informática
+                </p>
+
+                <footer class="team-card__footer">
+                  <address class="team-card__contact">
+                    <ul class="team-card__meta">
+                      <li class="team-card__meta-item">
+                        <span aria-hidden="true">&#128205;</span>
+                        <span>La Matanza</span>
+                      </li>
+                      <li class="team-card__meta-item">
+                        <a href="mailto:axelfiguered2@gmail.com" class="team-card__email">
+                          <span aria-hidden="true">&#9993;</span>
+                          axelfiguered2@gmail.com
+                        </a>
+                      </li>
+                    </ul>
+                  </address>
+                </footer>
+
+              </article>
+            </li>
+
+            <li class="team__item">
+              <article class="team-card" aria-labelledby="member-3-name">
+
+                <header class="team-card__header">
+                  <span class="team-card__avatar" aria-hidden="true">MT</span>
+                  <hgroup class="team-card__identity">
+                    <h3 class="team-card__name" id="member-3-name">Marilyn Pamela Tufillaro</h3>
+                    <p class="team-card__role">Desarrolladora</p>
+                  </hgroup>
+                </header>
+
+                <p class="team-card__bio">
+                  Estudiante en Tecnicatura en Programación
+                </p>
+
+                <footer class="team-card__footer">
+                  <address class="team-card__contact">
+                    <ul class="team-card__meta">
+                      <li class="team-card__meta-item">
+                        <span aria-hidden="true">&#128205;</span>
+                        <span>Monte Chingolo</span>
+                      </li>
+                      <li class="team-card__meta-item">
+                        <a href="mailto:tufillaromarilyn1998@gmail.com" class="team-card__email">
+                          <span aria-hidden="true">&#9993;</span>
+                          tufillaromarilyn1998@gmail.com
+                        </a>
+                      </li>
+                    </ul>
+                  </address>
+                </footer>
+
+              </article>
+            </li>
+
+          </ul>
+        </section>
+
+        <!-- Listado de tecnologías utilizadas -->
+        <section class="tech-stack" aria-labelledby="tech-title">
+
+          <header class="tech-stack__header">
+            <p class="tech-stack__eyebrow">Cómo lo construimos</p>
+            <hgroup class="tech-stack__heading">
+              <h2 class="tech-stack__title" id="tech-title">
+                Sin frameworks. Solo <em class="tech-stack__title-highlight">código puro</em>
+              </h2>
+              <p class="tech-stack__description">
+                Creemos que la web funciona mejor cuando entendés exactamente lo que está pasando. Por eso todo acá está escrito a mano.
+              </p>
+            </hgroup>
+          </header>
+
+          <ul class="tech-stack__list" aria-label="Tecnologías utilizadas">
+
+            <li class="tech-stack__item">
+              <article class="tech-card" aria-labelledby="tech-1-name">
+                <header class="tech-card__header">
+                  <span class="tech-card__icon" aria-hidden="true">&#60;/&#62;</span>
+                  <hgroup class="tech-card__identity">
+                    <h3 class="tech-card__name" id="tech-1-name">HTML</h3>
+                    <p class="tech-card__badge">
+                      <abbr title="versión 5">v5</abbr>
+                    </p>
+                  </hgroup>
+                </header>
+                <p class="tech-card__description">
+                  Toda la estructura semántica de la plataforma. Sin div-soup, con etiquetas que tienen sentido.
+                </p>
+              </article>
+            </li>
+
+            <li class="tech-stack__item">
+              <article class="tech-card" aria-labelledby="tech-2-name">
+                <header class="tech-card__header">
+                  <span class="tech-card__icon" aria-hidden="true">&#127912;</span>
+                  <hgroup class="tech-card__identity">
+                    <h3 class="tech-card__name" id="tech-2-name">CSS</h3>
+                    <p class="tech-card__badge">Custom</p>
+                  </hgroup>
+                </header>
+                <p class="tech-card__description">
+                  Animaciones, variables, grid y un modo oscuro que no lastima los ojos. Cero frameworks.
+                </p>
+              </article>
+            </li>
+
+            <li class="tech-stack__item">
+              <article class="tech-card" aria-labelledby="tech-3-name">
+                <header class="tech-card__header">
+                  <span class="tech-card__icon" aria-hidden="true">&#128269;</span>
+                  <hgroup class="tech-card__identity">
+                    <h3 class="tech-card__name" id="tech-3-name">JavaScript</h3>
+                    <p class="tech-card__badge">
+                      <abbr title="ECMAScript 2024">ES2024</abbr>
+                    </p>
+                  </hgroup>
+                </header>
+                <p class="tech-card__description">
+                  Vanilla JS para toda la interactividad: mapas, filtros, reveals y el comportamiento del navbar.
+                </p>
+              </article>
+            </li>
+
+          </ul>
+
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER DEL SITIO ===== -->
+    <footer class="site-footer">
+      <p class="site-footer__copy">
+        &copy; <time datetime="2026">2026</time> Secretos de la Ciudad
+      </p>
+    </footer>
+    <script src="../scripts/search-bar.js"></script>
+</body>
+</html>

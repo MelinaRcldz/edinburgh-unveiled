@@ -1,0 +1,135 @@
+.place-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: none;
+  place-items: center;
+
+  padding: 2rem;
+  background: rgba(5, 5, 10, 0.72);
+}
+
+.place-modal--open {
+  display: grid;
+}
+
+.place-modal__content {
+  width: min(92vw, 1100px);
+  max-height: 82vh;
+  overflow-y: auto;
+  position: relative;
+  background: #111018;
+  border: 1px solid rgba(124, 58, 237, 0.35);
+  border-radius: 1.5rem;
+  padding: 2rem;
+}
+
+.place-detail__close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  color: var(--color-purple);
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.place-detail {
+  display: grid;
+  grid-template-columns: minmax(260px, 42%) 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.place-detail__favorite {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--color-text);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+}
+
+.place-detail__image {
+  position: relative;
+}
+
+.place-detail__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.place-detail__info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.place-detail__info h2 {
+  margin-bottom: 0.75rem;
+}
+
+.place-detail__meta {
+  margin-top: auto;
+}
+
+.place-detail__meta p {
+  margin: 0;
+}
+
+
+/*Responsive*/
+@media (max-width: 768px) {
+  .place-modal {
+    padding: 1rem;
+  }
+
+  .place-modal__content {
+    width: 100%;
+    max-height: 90vh;
+    padding: 1rem;
+  }
+
+  .place-detail {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .place-detail__img {
+    max-height: 280px;
+    border-radius: 1rem;
+  }
+
+  .place-detail__favorite {
+    top: 0.75rem;
+    left: 0.75rem;
+  }
+
+  .place-detail__close {
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 1.6rem;
+    z-index: 10;
+  }
+
+  .place-detail__info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .place-detail__info {
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+}

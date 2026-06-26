@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secretos de la Ciudad | Inicio</title>
+    <link rel="stylesheet" href="./styles/global.css">
+    <link rel="stylesheet" href="./styles/hero.css">
+    <link rel="stylesheet" href="./styles/carousel.css">
+    <link rel="stylesheet" href="./styles/modal.css">
+    <link rel="icon" href="assets/favicon(2).svg" type="image/svg+xml">
+</head>
+<body>
+
+  <!-- ===== HEADER / NAV PRINCIPAL ===== -->
+  <header class="site-header">
+    <a href="/" class="brand" aria-label="Ir al inicio — Secretos de la Ciudad">
+      <span class="brand__icon" aria-hidden="true"></span>
+      <span class="brand__name">
+        <strong>Secretos</strong>
+        <span>de la Ciudad</span>
+      </span>
+    </a>
+
+    <!-- ===== Navegación principal ===== -->
+    <nav class="main-nav" aria-label="Navegación principal">
+      
+      <ul class="main-nav__list">
+        <li><a href="index.html" class="main-nav__link main-nav__link--active" aria-current="page">Inicio</a></li>
+        <li><a href="pages/places.html" class="main-nav__link">Explorar</a></li>
+        <li><a href="pages/map.html" class="main-nav__link">Mapa</a></li>
+        <li><a href="pages/about.html" class="main-nav__link">Sobre nosotros</a></li>
+      </ul>
+    </nav>
+
+    <!-- ===== Barra de búsqueda ===== -->
+    <form class="site-search" role="search" action="#" method="get">
+
+      <label for="search-input" class="sr-only">Buscar lugares</label>
+      <input
+        id="search-input"
+        type="search"
+        name="q"
+        class="site-search__input"
+        placeholder="Buscar lugares..."
+        autocomplete="off"
+      />
+      <button type="submit" class="site-search__btn" aria-label="Buscar">
+        <span class="icon icon--search" aria-hidden="true"></span>
+      </button>
+    </form>
+  </header>
+
+  
+  <main class="site-layout">
+ 
+    <!-- ═══ HERO ═══ -->
+    <section class="hero">
+      <img class="hero__bg"
+      src="./assets/images/hero-bg.jpg"
+      alt=""
+      aria-hidden="true"
+      />
+      <span class="hero__overlay hero__overlay--dark" aria-hidden="true"></span>
+      <span class="hero__overlay hero__overlay--purple" aria-hidden="true"></span>
+ 
+      <article class="hero__container">
+        <header class="hero__content">
+          <h1 class="hero__title">
+            Descubre los <em class="hero__title-highlight">Secretos</em> de la Ciudad
+          </h1>
+ 
+          <p class="hero__description">
+             En cada rincón hay algo esperando ser contado.
+          </p>
+ 
+          <nav class="hero__actions" aria-label="Acciones principales">
+            <a href="/pages/places.html" class="hero__btn hero__btn--primary">
+              Explorar Ahora
+            </a>
+            <a href="#lugares-destacados" class="hero__link">
+              Ver destacados →
+            </a>
+          </nav>
+        </header>
+
+        <figure class="hero__visual">
+          <img
+            class="hero__card-image"
+            src="./assets/images/caminito.jpg"
+            alt="Vista nocturna de esquina emblemática de Caminito, La Boca, Buenos Aires">
+          
+          <figcaption class="hero__card-info">
+            <svg class="hero__card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            <h2>
+              Caminito
+            </h2>
+            <p> La Boca, Buenos Aires </p>
+          </figcaption>
+
+        </figure>
+      </article>
+    </section>
+ 
+    <!-- ═══ FEATURED ═══ -->
+    <section class="featured" id="lugares-destacados">
+      <article class="featured__container">
+
+        <header class="featured__eyebrow">
+          <hr class="featured__eyebrow-line" aria-hidden="true" />
+          <span class="featured__eyebrow-label">Destacados</span>
+        </header>
+ 
+        <header class="featured__heading">
+          <h2 class="featured__title">
+            Lugares con <em class="featured__title-highlight">historia...</em>
+          </h2>
+          <a class="featured__cta" href="/pages/places.html" role="button">Seguir explorando →</a>
+        </header>
+ 
+        <nav class="featured__carousel" aria-label="Carrusel de lugares">
+          <button class="featured__carousel-btn featured__carousel-btn--prev" id="carousel-prev" aria-label="Anterior" disabled>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div
+              class="featured__grid"
+              id="contenedor-cards-index"
+            ></div>
+          <button class="featured__carousel-btn featured__carousel-btn--next" id="carousel-next" aria-label="Siguiente">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </nav>
+      </article>
+    </section>
+    
+  </main>
+  
+    <div
+      class="place-modal"
+      id="placeModal"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+    >
+      <div class="place-modal__content" id="placeModalContent"></div>
+    </div>
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p class="site-footer__copy">
+      &copy; <time datetime="2026">2026</time> Secretos de la Ciudad
+    </p>
+  </footer>
+
+<script src="./scripts/places.js"></script>
+<script src="./scripts/places-modal.js"></script>
+<script src="./scripts/search-bar.js"></script>
+</body>
+</html>

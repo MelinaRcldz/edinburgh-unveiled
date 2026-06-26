@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secretos de la Ciudad | Mapa Interactivo</title>
+<link rel="stylesheet" href="/styles/map.css">
+<link rel="stylesheet" href="/styles/global.css">
+<link rel="icon" href="/assets/favicon(2).svg" type="image/svg+xml">
+</head>
+<body>
+
+<!-- ===== HEADER / NAV PRINCIPAL ===== -->
+    <header class="site-header">
+      <a href="/" class="brand" aria-label="Ir al inicio — Secretos de la Ciudad">
+        <span class="brand__icon" aria-hidden="true"></span>
+        <span class="brand__name">
+          <strong>Secretos</strong>
+          <span>de la Ciudad</span>
+        </span>
+      </a>
+
+      <!-- ===== Navegación principal ===== -->
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="main-nav__list">
+          <li><a href="../index.html" class="main-nav__link">Inicio</a></li>
+          <li><a href="places.html" class="main-nav__link">Explorar</a></li>
+          <li><a href="map.html" class="main-nav__link main-nav__link--active" aria-current="page">Mapa</a></li>
+          <li><a href="about.html" class="main-nav__link">Sobre nosotros</a></li>
+        </ul>
+      </nav>
+
+
+    </header>
+
+<main id="main-content" aria-label="Explorador de lugares nocturnos de Buenos Aires">
+  <h1 class="sr-only">
+    Mapa interactivo de lugares secretos de Buenos Aires
+  </h1>
+  <div class="app">
+ 
+    <!-- ===== SIDEBAR FILTROS ===== -->
+    <!--
+      <aside> es correcto aquí: es contenido complementario al mapa.
+      El <nav> interno lista las categorías; sus ítems se inyectan
+      como <ul><li><button> desde el JS para respetar la semántica de lista.
+    -->
+    <aside class="sidebar" aria-label="Filtros de categoría">
+      <div class="sidebar__header">
+        <p class="sidebar__title">Filtrar</p>
+        <p class="sidebar__subtitle">Seleccioná una categoría</p>
+      </div>
+ 
+      <!--
+        Buscador del mapa.
+        id="search-input" es el que usa places2.js; vive aquí,
+        dentro del <main>, separado del buscador del sitio en el header.
+      -->
+      <div class="sidebar__search">
+        <label for="search-input" class="sr-only">Buscar lugares en el mapa</label>
+        <input
+          id="search-input"
+          type="search"
+          class="sidebar__search-input"
+          placeholder="Buscar por nombre o barrio…"
+          autocomplete="off"
+          aria-label="Buscar lugares en el mapa"
+          aria-controls="map-canvas"
+        />
+      </div>
+ 
+      <!--
+        <nav> con lista explícita.
+        El JS (buildFilters) insertará: <ul> > <li> > <button>.
+      -->
+      <nav id="filter-nav" class="sidebar__filters" aria-label="Filtrar por categoría"></nav>
+ 
+      <div class="sidebar__footer">
+        <!--
+          aria-live="polite": anuncia los cambios de cantidad
+          a lectores de pantalla sin interrumpir.
+          aria-atomic="true": lee el fragmento completo.
+        -->
+        <p class="sidebar__footer-count" aria-live="polite" aria-atomic="true">
+          <strong id="place-count">0</strong>
+          lugares visibles
+        </p>
+      </div>
+    </aside>
+    <!-- FIN SIDEBAR -->
+ 
+    <!-- ===== MAPA ===== -->
+    <!--
+      role="region" + aria-label: identifica la zona del mapa
+      como una región landmarks navegable por AT.
+    -->
+    <div class="map-wrap" role="region" aria-label="Mapa interactivo de Buenos Aires">
+ 
+      <p class="map-hint">
+        📍 Tocá un barrio o un marcador para ver información.
+      </p>
+
+      <!-- Estados de carga / error -->
+      <div class="map-overlay" id="map-loading" role="status" aria-live="polite" aria-label="Cargando mapa">
+        <div class="spinner" aria-hidden="true"></div>
+        <span>Cargando mapa…</span>
+      </div>
+      <div class="map-overlay hidden" id="map-error" role="alert" aria-live="assertive">
+        <span aria-hidden="true" style="font-size:32px">⚠️</span>
+        <p>No se pudieron cargar los datos del mapa.</p>
+      </div>
+ 
+      <!--
+        role="application": indica a los AT que este elemento
+        gestiona su propia interacción de teclado (zoom, pan, etc.).
+        aria-describedby: instrucciones de uso disponibles para AT.
+      -->
+      <div
+        id="map-canvas"
+        class="map-canvas"
+        role="application"
+        tabindex="0"
+        aria-label="Mapa de Buenos Aires"
+        aria-describedby="map-instructions"
+      ></div>
+ 
+      <!-- Instrucciones ocultas visualmente, disponibles para AT -->
+      <p id="map-instructions" class="sr-only">
+        Usá la rueda del mouse o los botones +/− para hacer zoom.
+        Arrastrá para desplazarte. Doble clic para restablecer la vista.
+        Presioná las teclas de flecha para desplazarte con el teclado.
+        Presioná Enter o Espacio sobre un marcador para ver sus detalles.
+      </p>
+ 
+      <!--
+        role="group" + aria-label: agrupa los botones de zoom
+        como una unidad semántica para AT.
+      -->
+      <div class="zoom-controls" role="group" aria-label="Controles de zoom del mapa">
+        <button class="zoom-btn" id="z-in"  type="button" title="Acercar" aria-label="Acercar mapa">+</button>
+        <button class="zoom-btn" id="z-out" type="button" title="Alejar"  aria-label="Alejar mapa">−</button>
+        <button class="zoom-btn reset" id="z-rst" type="button" title="Restablecer vista" aria-label="Restablecer vista del mapa">⌂</button>
+      </div>
+ 
+      <!-- Tooltip de barrio (decorativo, no necesita ser leído por AT) -->
+      <div class="barrio-tooltip" id="barrio-tooltip" aria-hidden="true"></div>
+ 
+      <!--
+        Leyenda de comunas.
+        El JS (buildLegend) insertará: <ul> > <li> con el swatch y texto.
+      -->
+      <div class="map-legend" id="map-legend" role="region" aria-label="Leyenda de comunas">
+        <p class="map-legend__title" aria-hidden="true">Comunas</p>
+      </div>
+ 
+      <!-- ===== PANEL DE DETALLE ===== -->
+      <!--
+        role="dialog": comunica a los AT que es un diálogo modal.
+        aria-modal="true": los AT no deben navegar fuera mientras esté abierto.
+        aria-labelledby: título del diálogo (nombre del lugar seleccionado).
+        aria-hidden="true" en estado cerrado: lo oculta completamente a los AT.
+        El JS activa/desactiva aria-hidden y mueve el foco al abrirse/cerrarse.
+      -->
+      <aside
+        class="detail-panel"
+        id="detail-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Detalle del lugar seleccionado"
+        aria-labelledby="panel-name"
+        aria-hidden="true"
+      >
+        <!-- Estado vacío (ningún lugar seleccionado) -->
+        <div class="panel__empty" id="panel-empty">
+          <span class="panel__empty-icon" aria-hidden="true">📍</span>
+          <p>Hacé clic en un marcador o barrio para ver los detalles del lugar.</p>
+        </div>
+ 
+        <!-- Contenido del lugar seleccionado -->
+        <div id="panel-content" style="display:none; flex-direction:column; height:100%">
+ 
+          <button class="panel__close" id="panel-close" type="button" aria-label="Cerrar detalle del lugar">✕</button>
+ 
+          <!-- Hero -->
+          <div class="panel__hero" id="panel-hero">
+            <span class="panel__hero-icon" id="panel-icon" aria-hidden="true"></span>
+            <span class="panel__hero-barrio" id="panel-barrio-label"></span>
+          </div>
+ 
+          <!-- Cuerpo con scroll -->
+          <div class="panel__body">
+            <div class="anim-in">
+ 
+              <p class="panel__cat" id="panel-cat"></p>
+ 
+              <!-- h2: título del diálogo; referenciado por aria-labelledby -->
+              <h2 class="panel__name" id="panel-name"></h2>
+ 
+              <address class="panel__address">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true" focusable="false">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                </svg>
+                <span id="panel-addr-text"></span>
+              </address>
+ 
+              <p class="panel__desc" id="panel-desc"></p>
+ 
+              <!-- Metadatos como lista de definición -->
+              <dl class="panel__meta">
+                <div class="meta-row">
+                  <dt class="meta-row__label">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Horario nocturno
+                  </dt>
+                  <dd class="meta-row__val" id="panel-horario"></dd>
+                </div>
+                <div class="meta-row">
+                  <dt class="meta-row__label">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true" focusable="false"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    Precio
+                  </dt>
+                  <dd class="meta-row__val" id="panel-precio"></dd>
+                </div>
+                <div class="meta-row">
+                  <dt class="meta-row__label">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                    Accesibilidad
+                  </dt>
+                  <dd class="meta-row__val" id="panel-acc"></dd>
+                </div>
+              </dl>
+ 
+              <h3 class="panel__section-title">Recomendaciones</h3>
+              <ul class="recs-list" id="panel-recs"></ul>
+ 
+              <h3 class="panel__section-title">Ideal para</h3>
+              <ul class="tags-list" id="panel-tags"></ul>
+ 
+            </div>
+          </div><!-- /.panel__body -->
+ 
+          <!-- Footer del panel -->
+          <div class="panel__footer">
+            <button class="btn-fav" id="btn-fav" type="button" aria-pressed="false">
+              <span id="btn-fav-icon" aria-hidden="true">🤍</span>
+              <span id="btn-fav-label">Agregar a favoritos</span>
+            </button>
+          </div>
+ 
+        </div><!-- /#panel-content -->
+      </aside>
+      <!-- FIN PANEL DE DETALLE -->
+ 
+    </div><!-- /.map-wrap -->
+  </div><!-- /.app -->
+ 
+</main>
+<!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p class="site-footer__copy">
+      &copy; <time datetime="2026">2026</time> Secretos de la Ciudad
+    </p>
+  </footer>
+<script src="../scripts/place-filters.js"></script>
+<script src="../scripts/map.js"></script>
+<script src="../scripts/map-panel.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secretos de la Ciudad | Explorar</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/carousel.css">
+    <link rel="stylesheet" href="../styles/places.css">
+    <link rel="stylesheet" href="../styles/modal.css">
+    <link rel="icon" href="/assets/favicon(2).svg" type="image/svg+xml">
+</head>
+<body>
+
+    <!-- ===== HEADER / NAV PRINCIPAL ===== -->
+    <header class="site-header">
+      <a href="/" class="brand" aria-label="Ir al inicio — Secretos de la Ciudad">
+        <span class="brand__icon" aria-hidden="true"></span>
+        <span class="brand__name">
+          <strong>Secretos</strong>
+          <span>de la Ciudad</span>
+        </span>
+      </a>
+
+      <!-- ===== Navegación principal ===== -->
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="main-nav__list">
+          <li><a href="../index.html" class="main-nav__link">Inicio</a></li>
+          <li><a href="places.html" class="main-nav__link main-nav__link--active" aria-current="page">Explorar</a></li>
+          <li><a href="map.html" class="main-nav__link">Mapa</a></li>
+          <li><a href="about.html" class="main-nav__link">Sobre nosotros</a></li>
+        </ul>
+      </nav>
+
+      <!-- ===== Barra de búsqueda ===== -->
+      
+      <form class="site-search" role="search" action="#" method="get">
+        <label for="search-input" class="sr-only">Buscar lugares</label>
+        <input
+          id="search-input"
+          type="search"
+          name="q"
+          class="site-search__input"
+          placeholder="Buscar lugares..."
+          autocomplete="off"
+          aria-label="Buscar lugares"
+        />
+        <button type="submit" class="site-search__btn" aria-label="Buscar">
+          <span class="icon icon--search" aria-hidden="true"></span>
+        </button>
+      </form>
+
+    </header>
+
+      <main class="site-layout places-page">
+
+    <!-- Section de la lista de lugares para explorar -->
+    <section class="places-explorer" aria-labelledby="explorar-titulo">
+ 
+        <header class="places-explorer__header">
+          <h1 class="places-explorer__title" id="explorar-titulo">
+                  Explorar <span class="places-explorer__title-highlight">lugares</span>
+          </h1>
+          <p class="places-explorer__subtitle">Una selección que forma parte de la identidad de la ciudad.</p>
+        </header>
+
+        <p class="places-explorer__count" id="placesCount" aria-live="polite">
+          Buscando lugares...
+        </p>
+        <!-- Filtros -->
+        <nav class="places-explorer__filters" aria-label="Filtrar por categoría">
+          <ul class="filter-list" id="places-filter-list">
+            <li class="filter-list__item">
+            <button class="filter-list__link" href="#" data-filter="cultura">🎭 Cultura</button>
+            </li>
+            <li class="filter-list__item">
+            <button class="filter-list__link" href="#" data-filter="gastronomia">🍽️ Gastronomía</button>
+            </li>
+            <li class="filter-list__item">
+            <button class="filter-list__link" href="#" data-filter="naturaleza">🌿 Naturaleza</button>
+            </li>
+            <li class="filter-list__item">
+            <button class="filter-list__link" href="#" data-filter="historicos">🏛️ Históricos</button>
+            </li>
+            <li class="filter-list__item">
+            <button class="filter-list__link" href="#" data-filter="nocturnos">🌙 Nocturnos</button>
+            </li>
+            <li class="filter-list__item">
+            <button class="filter-list__link" href="#" data-filter="paseos">🚶 Paseos</button>
+            </li>
+          </ul>
+          <button class="filters-button" type="button" aria-label="Abrir filtros avanzados">
+            &#9965; Filtros
+          </button>
+        </nav>
+
+        <nav class="places-pagination places-pagination--top" aria-label="Paginación de lugares">
+          <button class="places-pagination__btn" id="prevPageTop" type="button">← Anterior</button>
+          <span class="places-pagination__status" id="pageStatusTop">Página 1 de 1</span>
+          <button class="places-pagination__btn" id="nextPageTop" type="button">Siguiente →</button>
+        </nav>
+ 
+        <!-- Lista de lugares para explorar -->
+        <ol id="contenedor-cards-places" class="place-list" aria-label="Lista de lugares"></ol>
+        
+        <nav class="places-pagination places-pagination--bottom" aria-label="Paginación de lugares">
+          <button class="places-pagination__btn" id="prevPageBottom" type="button">← Anterior</button>
+          <span class="places-pagination__status" id="pageStatusBottom">Página 1 de 1</span>
+          <button class="places-pagination__btn" id="nextPageBottom" type="button">Siguiente →</button>
+        </nav>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER DEL SITIO ===== -->
+    <footer class="site-footer">
+      <p class="site-footer__copy">
+        &copy; <time datetime="2026">2026</time> Secretos de la Ciudad
+      </p>
+    </footer>
+    <script src="../scripts/search-bar.js"></script>
+    <script src="../scripts/place-filters.js"></script>
+    <script src="../scripts/places-pagination.js"></script>
+    <script src="../scripts/places-modal.js"></script>
+    <script src="../scripts/places.js"></script>
+    
+
+    <div
+      class="place-modal"
+      id="placeModal"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+    >
+      <div class="place-modal__content" id="placeModalContent"></div>
+    </div>
+</body>
+</html>
