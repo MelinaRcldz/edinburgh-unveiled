@@ -1,63 +1,56 @@
+# 🕯️ Edinburgh Unveiled
 
-# Nombre del proyecto
+## 🌌 Descripción
 
-Nuestro proyecto se llama "Tour Nocturno en la Ciudad de Buenos Aires"
+**Edinburgh Unveiled** es una experiencia interactiva que invita a descubrir una faceta diferente de Edimburgo. A través de un mapa interactivo y una exploración narrativa, el proyecto reúne rincones poco conocidos, calles históricas, jardines ocultos, pubs centenarios y lugares envueltos en leyendas que suelen quedar fuera de los recorridos turísticos tradicionales.
 
-## Descripción breve
+La propuesta no busca reemplazar una guía turística tradicional, sino ofrecer una forma distinta de recorrer la ciudad, donde cada lugar revela una historia, una curiosidad o un fragmento del pasado.
 
-Nuestra idea principal es realizar un listado de lugares turísticos e interesantes de la Ciudad de Buenos Aires, contando con un mapa interactivo donde se puede visualizar algunos lugares interesantes. Cuenta con diferentes páginas con diferentes funciones: La página de inicio donde se puede
+---
 
-## Integrantes del grupo
+## ✨ Concepto
 
-- Axel Figueredo
-- Melina Ricaldez
-- Marilyn Pamela Tufillaro
+Más que una guía turística, **Edinburgh Unveiled** propone una experiencia inmersiva organizada en recorridos temáticos que invitan a descubrir la ciudad desde distintas perspectivas.
 
-## Idea elegida
+- 🏰 **Forgotten Corners** — callejones históricos, pasajes ocultos, plazas discretas y rincones que conservan la esencia del viejo Edimburgo.
+- 📜 **Stories & Legends** — lugares vinculados a personajes históricos, mitos, leyendas, sucesos curiosos y episodios que forman parte de la memoria de la ciudad.
+- 🌿 **Hidden Retreats** — jardines escondidos, cementerios históricos, patios silenciosos y espacios donde escapar del ritmo urbano.
+- 🍸 **Night & Atmosphere** — donde la ciudad adquiere un carácter diferente al anochecer: pubs históricos, callejones iluminados, miradores, edificios emblemáticos y espacios con una atmósfera única.
 
-Mapa secreto de la ciudad
+Cada recorrido propone una forma distinta de explorar Edimburgo, combinando historia, arquitectura, naturaleza y relatos para descubrir una ciudad que va mucho más allá de sus monumentos más conocidos.
 
-## Tecnologías utilizadas
+---
 
-El proyecto fue desarrollado utilizando HTML para la estructura del contenido, CSS para el diseño y la presentación visual, y JavaScript para la interactividad y el comportamiento dinámico del sitio.
+## 🛠️ Tecnologías utilizadas
 
-## Funcionalidades principales
+- **HTML5** — estructura y organización del contenido.
+- **CSS3** — diseño visual, responsive y ambientación inspirada en la arquitectura gótica de Edimburgo.
+- **JavaScript (ES6+)** — renderizado dinámico, interactividad, filtros y funcionamiento del mapa.
+- **Git & GitHub** — control de versiones y gestión del desarrollo.
 
-- 🗺️ Mapa interactivo con marcadores por lugar
-- 🔍 Sistema de filtrado y búsqueda de lugares
-- 📱 Diseño responsive adaptado a distintos dispositivos
+---
 
-## Link al deploy
+## 🚀 Funcionalidades principales
 
-| 🌐 Deploy | https://tour-nocturno-ciudad-buenos-aires.vercel.app |
+- 🗺️ Mapa interactivo con marcadores y exploración por zonas.
+- 🔍 Sistema de búsqueda, filtros y exploración mediante recorridos temáticos.
+- ⭐ Gestión de favoritos con persistencia mediante almacenamiento local.
+- 📱 Diseño responsive adaptado a distintos dispositivos.
+- 🌙 Ambientación visual inspirada en la historia, la arquitectura y la atmósfera nocturna de Edimburgo.
 
-## Link al repositorio
+---
 
-| 📁 Repositorio | https://github.com/MariTufi505/tour-nocturno-Ciudad-BuenosAires |
+## 🧭 Instrucciones de uso
 
-## Instrucciones básicas de uso
+1. Explora la página principal para descubrir una selección de lugares destacados.
+2. Accede a la sección **Explorar** para recorrer el catálogo completo y filtrar los lugares según el recorrido temático que prefieras.
+3. Utiliza el **Mapa** para localizar cada sitio y conocer su historia.
+4. Guarda tus lugares favoritos para crear un recorrido personalizado por la ciudad.
 
-- En la página de Inicio podemos explorar algunos de los lugares destacados de la Ciudad de Buenos Aires. Al hacer clic sobre ellos, se despliega un panel con información detallada del lugar seleccionado, junto con la opción de agregarlo a Favoritos. Entre los datos disponibles se encuentran: ubicación, categorías, horarios, y más.
+---
 
-- A continuación, la sección Explorar reúne el listado completo de lugares incluidos en el proyecto, organizados en páginas para una navegación más cómoda. También es posible filtrarlos por categorías como Cultura, Paseo Urbano, entre otras.
-- En la página de Mapa se presenta un mapa interactivo de la Ciudad de Buenos Aires que permite acercar o alejar la vista y recorrer las distintas comunas que la conforman. Al seleccionar un lugar, se visualiza su ubicación exacta junto con una breve descripción de sus características.
+## 📖 Origen del proyecto
 
-- Por último, la página Sobre Nosotros ofrece una presentación de los integrantes del equipo y las tecnologías utilizadas para el desarrollo del proyecto.
+**Edinburgh Unveiled** nace como una adaptación personal de un proyecto académico desarrollado originalmente en equipo.
 
-## Breve explicacion de la estructura del proyecto
-
-El proyecto cuenta con los siguientes archivos en la raíz: `index.html` (página de inicio), `README.md`, `IAInform.md` y `.gitignore`.
-
-Dentro de la carpeta principal, el proyecto se organiza en los siguientes directorios:
-
-- **pages/** — Contiene los archivos HTML correspondientes a cada página del sitio.
-- **styles/** — Agrupa las hojas de estilo CSS, separadas por componentes para mayor modularidad. Por ejemplo, `global.css` define los estilos comunes a todas las páginas, mientras que los demás archivos CSS son específicos de cada sección.
-- **scripts/** — Incluye los archivos JavaScript, organizados según la funcionalidad de cada página.
-- **data/** — Almacena un archivo JSON con los datos de los lugares, estructurado como un array de objetos donde cada elemento se identifica por un `id` y contiene sus respectivos atributos.
-- **assets/images/** — Contiene las imágenes utilizadas en el sitio.
-
-## Mencion del uso de IA o referencia al informe correspondiente
-
-El informe completo se encuentra en [`IAInform.md`](./IAInform.md).
-
-En resumen, la IA fue utilizada como herramienta de apoyo en distintas etapas del desarrollo: generación de código, soporte visual, y asistencia en la detección y resolución de errores.
+Esta versión utiliza aquella base técnica como punto de partida, pero evoluciona hacia una experiencia completamente centrada en Edimburgo. El objetivo es transformar el proyecto mediante una nueva identidad visual, contenido original, mejoras técnicas y una experiencia de usuario más inmersiva, manteniendo una arquitectura que permita seguir ampliándolo en el futuro.
