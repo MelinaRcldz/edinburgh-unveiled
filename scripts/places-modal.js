@@ -13,8 +13,8 @@ function abrirModal(lugar) {
             <figure class="place-detail__image">
             <button class="place-detail__favorite">
             ${favoritos.includes(lugar.id)
-                ? '❤️ En favoritos'
-                : '♡ Agregar a favoritos'}
+            ? '❤️ En favoritos'
+            : '♡ Agregar a favoritos'}
             </button>
                 <img
                     src="${imagenLugar}"
@@ -33,6 +33,21 @@ function abrirModal(lugar) {
                     <p><strong>Precio:</strong> ${lugar.precio}</p>
                     <p><strong>Ubicación:</strong> ${lugar.ubicacion_exacta}</p>
                 </div>
+
+            ${lugar.recomendaciones?.length
+            ? `
+        <section class="place-detail__recommendations">
+            <h3>Recomendaciones</h3>
+
+            <ul>
+                ${lugar.recomendaciones
+                .map(rec => `<li>${rec}</li>`)
+                .join("")}
+            </ul>
+        </section>
+        `
+            : ""
+        }
             </div>
         </article>
     `;
@@ -47,9 +62,9 @@ function abrirModal(lugar) {
 
     const btnFavoritoModal = contenido.querySelector('.place-detail__favorite');
     btnFavoritoModal.addEventListener('click', () => {
-    manejarFavorito(lugar.id, btnFavoritoModal);
-});
-    
+        manejarFavorito(lugar.id, btnFavoritoModal);
+    });
+
 }
 
 function cerrarModal() {
