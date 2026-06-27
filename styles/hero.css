@@ -60,6 +60,15 @@
   transform: translateY(-1.5rem);
 }
 
+.hero__eyebrow {
+  margin-bottom: var(--space-4);
+  color: var(--color-purple);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
 .hero__visual {
   position: relative;
   width: 100%;
