@@ -7,47 +7,69 @@
    1. CUSTOM PROPERTIES (Design Tokens)
    ──────────────────────────────────────────────────────────── */
 :root {
-  /* Colores */
-  --color-bg:          #0a0a0f;
-  --color-surface:     #111118;
-  --color-surface-2:   #18181f;
-  --color-border:      rgba(255, 255, 255, 0.07);
-  --color-border-strong: rgba(124, 58, 237, 0.45);
+  /* Colores base */
+  --color-bg: #101719;
+  /* noche húmeda */
+  --color-surface: #182124;
+  /* piedra oscura */
+  --color-surface-2: #223036;
+  /* piedra húmeda */
+  --color-border: rgba(234, 231, 220, 0.12);
+  --color-border-strong: rgba(176, 138, 90, 0.45);
 
-  --color-purple:      #7c3aed;
-  --color-purple-mid:  #6d28d9;
-  --color-purple-glow: rgba(124, 58, 237, 0.35);
-  --color-purple-soft: rgba(124, 58, 237, 0.12);
+  /* Identidad Edinburgh Unveiled */
+  --color-copper: #B08A5A;
+  /* cobre envejecido */
+  --color-copper-soft: rgba(176, 138, 90, 0.16);
+  --color-copper-glow: rgba(176, 138, 90, 0.30);
 
-  --color-text:        #f0edf8;
-  --color-text-muted:  rgba(240, 237, 248, 0.55);
-  --color-text-faint:  rgba(240, 237, 248, 0.30);
+  --color-moss: #4A5D4E;
+  /* verde musgo */
+  --color-moss-mid: #5F7462;
+  --color-moss-soft: rgba(74, 93, 78, 0.24);
 
-  --color-white:       #ffffff;
+  --color-petrol: #2E3A3F;
+  /* azul petróleo */
+  --color-fog: #7FA6B8;
+  /* niebla fría */
+
+  /* Texto */
+  --color-text: #EAE7DC;
+  /* marfil */
+  --color-text-muted: rgba(234, 231, 220, 0.68);
+  --color-text-faint: rgba(234, 231, 220, 0.38);
+
+  --color-white: #ffffff;
+
+  /* Alias temporales para no romper CSS existente */
+  --color-purple: var(--color-moss-mid);
+  --color-purple-mid: var(--color-moss);
+  --color-purple-glow: rgba(74, 93, 78, 0.35);
+  --color-purple-soft: var(--color-moss-soft);
 
   /* Tipografía */
   --font-display: 'Playfair Display', Georgia, serif;
-  --font-body:    'DM Sans', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
 
-  --text-xs:   0.75rem;
-  --text-sm:   0.875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
   --text-base: 1rem;
-  --text-lg:   1.125rem;
-  --text-xl:   1.25rem;
-  --text-2xl:  1.5rem;
-  --text-3xl:  1.875rem;
-  --text-4xl:  2.25rem;
-  --text-5xl:  3rem;
-  --text-6xl:  4rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 4rem;
 
   /* Espaciado */
-  --space-1:  0.25rem;
-  --space-2:  0.5rem;
-  --space-3:  0.75rem;
-  --space-4:  1rem;
-  --space-5:  1.25rem;
-  --space-6:  1.5rem;
-  --space-8:  2rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
   --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
@@ -62,25 +84,26 @@
   --radius-full: 9999px;
 
   /* Sombras */
-  --shadow-sm:     0 1px 3px rgba(0, 0, 0, 0.4);
-  --shadow-md:     0 4px 16px rgba(0, 0, 0, 0.5);
-  --shadow-lg:     0 8px 32px rgba(0, 0, 0, 0.6);
-  --shadow-purple: 0 0 24px var(--color-purple-glow);
-
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 4px 18px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.65);
+  --shadow-purple: 0 0 24px var(--color-copper-glow);
   /* Transiciones */
-  --transition-fast:   150ms ease;
-  --transition-base:   250ms ease;
-  --transition-slow:   400ms ease;
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
 
   /* Layout */
-  --max-width:    1280px;
-  --header-h:     72px;
+  --max-width: 1280px;
+  --header-h: 72px;
 }
 
 /* ────────────────────────────────────────────────────────────
    2. RESET & BASE
    ──────────────────────────────────────────────────────────── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -101,7 +124,9 @@ body {
   min-height: 100vh;
 }
 
-img, video, svg {
+img,
+video,
+svg {
   display: block;
   max-width: 100%;
 }
@@ -111,7 +136,8 @@ a {
   text-decoration: none;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -183,26 +209,32 @@ address {
   flex-shrink: 0;
   transition: opacity var(--transition-base);
 }
-.brand:hover { opacity: 0.85; }
+
+.brand:hover {
+  opacity: 0.85;
+}
 
 .brand__icon {
   width: 36px;
   height: 36px;
   border-radius: var(--radius-md);
-  background: var(--color-purple);
+  background: var(--color-moss);
+  border: 1px solid rgba(176, 138, 90, 0.35);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   font-size: var(--text-lg);
   font-weight: 700;
   color: var(--color-white);
   font-family: var(--font-display);
-  box-shadow: var(--shadow-purple);
-  /* Letra "S" como contenido generado */
+  box-shadow: 0 0 16px rgba(176, 138, 90, 0.18);
   position: relative;
 }
+
 .brand__icon::after {
-  content: 'S';
+  content: 'E';
   position: absolute;
   font-family: var(--font-display);
   font-weight: 900;
@@ -215,6 +247,7 @@ address {
   flex-direction: column;
   line-height: 1.15;
 }
+
 .brand__name strong {
   font-family: var(--font-display);
   font-size: var(--text-base);
@@ -223,6 +256,7 @@ address {
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
+
 .brand__name span {
   font-size: var(--text-xs);
   font-weight: 300;
@@ -235,11 +269,13 @@ address {
 .main-nav {
   flex: 1;
 }
+
 .main-nav__list {
   display: flex;
   align-items: center;
   gap: var(--space-1);
 }
+
 .main-nav__link {
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-full);
@@ -249,15 +285,18 @@ address {
   transition: color var(--transition-base), background var(--transition-base);
   letter-spacing: 0.01em;
 }
+
 .main-nav__link:hover {
   color: var(--color-text);
   background: var(--color-purple-soft);
 }
+
 .main-nav__link--active {
   color: var(--color-text);
   background: var(--color-purple-soft);
   position: relative;
 }
+
 .main-nav__link--active::after {
   content: '';
   position: absolute;
@@ -282,10 +321,12 @@ address {
   transition: border-color var(--transition-base), box-shadow var(--transition-base);
   margin-left: auto;
 }
+
 .site-search:focus-within {
   border-color: var(--color-purple);
   box-shadow: 0 0 0 3px var(--color-purple-soft);
 }
+
 .site-search__input {
   background: none;
   border: none;
@@ -295,16 +336,21 @@ address {
   font-size: var(--text-sm);
   width: 180px;
 }
+
 .site-search__input::placeholder {
   color: var(--color-text-faint);
 }
+
 .site-search__btn {
   display: flex;
   align-items: center;
   color: var(--color-text-muted);
   transition: color var(--transition-base);
 }
-.site-search__btn:hover { color: var(--color-purple); }
+
+.site-search__btn:hover {
+  color: var(--color-purple);
+}
 
 .icon--search::before {
   content: '';
@@ -375,6 +421,7 @@ address {
   transition: background var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
   box-shadow: var(--shadow-purple);
 }
+
 .btn-primary:hover {
   background: #8b44ff;
   transform: translateY(-1px);
@@ -395,6 +442,7 @@ address {
   border: 1px solid var(--color-border);
   transition: background var(--transition-base), border-color var(--transition-base);
 }
+
 .btn-secondary:hover {
   background: var(--color-surface-2);
   border-color: rgba(255, 255, 255, 0.18);
@@ -411,6 +459,7 @@ address {
   padding-bottom: var(--space-12);
   text-align: center;
 }
+
 .page-header__eyebrow {
   font-size: var(--text-xs);
   font-weight: 600;
@@ -419,6 +468,7 @@ address {
   color: var(--color-purple);
   margin-bottom: var(--space-3);
 }
+
 .page-header__title {
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3.5rem);
@@ -426,10 +476,12 @@ address {
   color: var(--color-text);
   line-height: 1.1;
 }
+
 .page-header__title em {
   font-style: italic;
   color: var(--color-purple);
 }
+
 .page-header__desc {
   margin-top: var(--space-4);
   font-size: var(--text-lg);
@@ -442,10 +494,22 @@ address {
 /* ────────────────────────────────────────────────────────────
    10. SCROLLBAR PERSONALIZADA
    ──────────────────────────────────────────────────────────── */
-::-webkit-scrollbar        { width: 6px; }
-::-webkit-scrollbar-track  { background: var(--color-bg); }
-::-webkit-scrollbar-thumb  { background: rgba(124, 58, 237, 0.4); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--color-purple); }
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-purple);
+}
 
 
 /* ────────────────────────────────────────────────────────────
