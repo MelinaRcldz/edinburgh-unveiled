@@ -62,7 +62,7 @@
 
 .hero__eyebrow {
   margin-bottom: var(--space-4);
-  color: var(--color-purple);
+  color: var(--color-copper);
   font-size: var(--text-sm);
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -187,7 +187,7 @@
 }
 
 .hero__title-highlight {
-  color: #5a2a8a;
+  color: var(--color-copper);
   font-style: normal;
   text-shadow:  
     0 0 10px rgba(111, 53, 181, 0.45),
